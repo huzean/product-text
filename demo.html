@@ -641,28 +641,36 @@
 
 <body>
     <div id="app">
-        <div class="head_title">
-            <div>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-            </div>
-            <div>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-            </div>
-            <div>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-            </div>
-            <div>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
-                <text>我会佛货物 </text>
+         <!-- pc -->
+         <div v-if="isShow">
+            <div class="head_title">
+                <div>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                </div>
+                <div>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                </div>
+                <div>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                </div>
+                <div>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                    <text>我会佛货物 </text>
+                </div>
             </div>
         </div>
+        <!-- 移动端 -->
+        <div v-if="isfalse">
+            <div style="width:100% ;height:40px;     background-color: crimson;"></div>
+        </div>
+        <!--  -->
         <div>
             <h3>常用</h3>
             <a href="https://www.iconfont.cn/">阿里字体图标</a>
@@ -691,10 +699,7 @@
             <a href="https://web.youhuiduo.cn/admin/#/login">优识科技后台</a>
             <a href="https://cc.245buy.com/admin/login/index.html">三叠纪后台</a>
         </div>
-        <!--  -->
-        <div v-if="isShow">{{message}}</div>
-        <div v-if="isfalse">{{msg}}</div>
-        <!--  -->
+       
         <div class="content">
             <div class="part1">
                 <div class="part1-1">
@@ -790,8 +795,6 @@
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'pc端',
-                msg: '移动端',
                 isShow: true,
                 isfalse: true,
                 fullWidth: 0,
@@ -809,11 +812,11 @@
                     this.ifWidth = document.documentElement.clientWidth;
                     // 页面宽度小于750px时，不显示地图
                     if (this.ifWidth > 800) {
-                        this.isfalse = false
+                        this.isfalse = false//pc
                     } else {
                         this.isfalse = true
                     }
-                    if (this.fullWidth < 800) {
+                    if (this.fullWidth <=800) {//移动端
                         this.isShow = false;
                     } else {
                         this.isShow = true;
