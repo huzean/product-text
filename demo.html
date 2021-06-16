@@ -641,10 +641,11 @@
 
 <body>
     <div id="app">
-         <!-- pc -->
-         <div v-if="isShow">
+        <!-- pc -->
+        <div v-if="isShow">
             <div class="head_title">
                 <div>
+                    本地新的dev分支提交
                     <text>我会佛货物 </text>
                     <text>我会佛货物 </text>
                     <text>我会佛货物 </text>
@@ -699,7 +700,7 @@
             <a href="https://web.youhuiduo.cn/admin/#/login">优识科技后台</a>
             <a href="https://cc.245buy.com/admin/login/index.html">三叠纪后台</a>
         </div>
-       
+
         <div class="content">
             <div class="part1">
                 <div class="part1-1">
@@ -801,22 +802,34 @@
                 ifWidth: 0
             },
             created() {
-                window.addEventListener('resize', this.handleResize)
+               
+                // window.addEventListener('resize', this.handleResize)
+                console.log("111")
             },
+            onload() {
+            },
+            mounted:function(){
+                this.width()
+                this.handleResize()
+            },
+         
             beforeDestroy: function () {
                 window.removeEventListener('resize', this.handleResize)
             },
             methods: {
-                handleResize(event) {
+                width() {
                     this.fullWidth = document.documentElement.clientWidth;
                     this.ifWidth = document.documentElement.clientWidth;
+                },
+                handleResize(event) {
+
                     // 页面宽度小于750px时，不显示地图
                     if (this.ifWidth > 751) {
-                        this.isfalse = false//pc
+                        this.isfalse = false //pc
                     } else {
                         this.isfalse = true
                     }
-                    if (this.fullWidth <=751) {//移动端
+                    if (this.fullWidth <= 751) { //移动端
                         this.isShow = false;
                     } else {
                         this.isShow = true;
